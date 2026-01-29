@@ -1,0 +1,142 @@
+
+/* Reset for full screen display mode */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents scrolling on the kiosk display */
+  background-color: #222; /* Wall behind the board */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* The dark wood outer frame */
+.wood-frame {
+  width: 95%;
+  height: 90%;
+  background-color: #5d4037; /* Dark Wood */
+  border: 15px solid #3e2723; /* Darker Wood Border */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* The Green Chalkboard Header */
+.header-plate {
+  background-color: #1b5e20; /* Chalkboard Green */
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  border-bottom: 8px solid #3e2723;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+}
+
+.header-plate h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.header-plate h2 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* The Cork Background */
+.cork-area {
+  flex-grow: 1;
+  background-color: #d7ccc8; /* Fallback color */
+  /* A simple CSS pattern to simulate cork texture */
+  background-image: radial-gradient(#a1887f 1px, transparent 1px), radial-gradient(#a1887f 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 30px;
+  overflow-y: auto; /* Allow scrolling inside the frame if too many notices */
+}
+
+/* The Notice Paper */
+.notice-card {
+  width: 280px;
+  height: 220px; /* Fixed height for uniformity */
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  position: relative;
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+  color: #333;
+  
+  /* Handwritten font feel */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; 
+}
+
+/* Slight rotation for natural feel */
+.notice-card:nth-child(odd) { transform: rotate(1deg); }
+.notice-card:nth-child(even) { transform: rotate(-1deg); }
+.notice-card:hover { transform: scale(1.05) rotate(0deg); z-index: 10; }
+
+/* The "Pin" at the top center */
+.pin {
+  width: 12px;
+  height: 12px;
+  background-color: #d32f2f; /* Red Pin head */
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.notice-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #555;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+  margin-top: 10px; /* Make space for pin */
+}
+
+.notice-title {
+  margin: 5px 0 10px 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.notice-content {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.notice-footer {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 0.8rem;
+  color: #777;
+  font-style: italic;
+}
